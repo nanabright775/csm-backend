@@ -82,3 +82,42 @@ class ImageModel(models.Model):
     
     def __str__(self):
         return self.title 
+    
+    
+class Event(models.Model):
+    """models for event"""
+    title = models.CharField(max_length=255)
+    date_started = models.DateField
+    date_ended = models.DateField
+    description = models.TextField
+    image = models.ImageField(null=True, upload_to=gallery_image_file_path)
+    def __str__(self):
+        return self.title 
+    
+    
+class News(models.Model):
+    """models for news"""
+    title = models.CharField(max_length=255)
+    description = models.TextField
+    image = models.ImageField(null=True, upload_to=gallery_image_file_path)
+    date = models.DateField
+
+    def __str__(self):
+        return self.title 
+
+class Programs(models.Model):
+    """models for handlings programs"""
+    title = models.CharField(max_length=255)
+    description = models.TextField
+    date = models.DateField
+    def __str__(self):
+        return self.title 
+    
+    
+class Anouncement(models.Model):
+    """models for managing announcement"""
+    title = models.CharField(max_length=255)
+    description = models.TextField
+    date = models.DateField
+    def __str__(self):
+        return self.title 

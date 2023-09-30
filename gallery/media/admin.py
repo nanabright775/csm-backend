@@ -46,4 +46,8 @@ admin.site.register(models.User, UserAdmin)
 admin.site.register(models.TagModel)
 admin.site.register(models.ImageModel)
 admin.site.register(models.GalleryModel)
+admin.site.register(models.News)
+admin.site.register(models.Programs)
+admin.site.register(models.Anouncement)
+admin.site.register(models.Event)
 

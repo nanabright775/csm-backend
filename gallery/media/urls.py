@@ -15,6 +15,11 @@ router = DefaultRouter()
 router.register('gallery', views.GalleryViewSet)
 router.register('tags', views.TagViewSet)
 router.register('image', views.ImageVIewSet)
+router.register('event', views.EventViewSet)
+router.register('news', views.NewsViewSet)
+router.register('programme', views.ProgramViewSet)
+router.register('announcement', views.AnnouncementViewSet)
+
 
 app_name = 'media'
 

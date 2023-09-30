@@ -8,11 +8,12 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from media.models import (GalleryModel, TagModel, ImageModel)
+from media.models import (GalleryModel, TagModel, ImageModel, Anouncement, Programs, News, Event)
 from media.serialiizer import (
-    TagModelSerializer,
-    ImageModelSerializer,
-    GalleryModelSerializer,
+    TagModelSerializer,NewsSerializer,
+    ImageModelSerializer,ProgramsSerializers,
+    GalleryModelSerializer,EventSerializer,
+    AnnouncementSerielizer,
 )
 
 
@@ -61,4 +62,24 @@ class ImageVIewSet(viewsets.ModelViewSet):
     """manageimage Database"""
     serializer_class = ImageModelSerializer
     queryset = ImageModel.objects.all()
+    
+class EventViewSet(viewsets.ModelViewSet):
+    """viewset for managing event"""
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
 
+class NewsViewSet(viewsets.ModelViewSet):
+    """managing news"""
+    serializer_class = NewsSerializer
+    queryset = News.objects.all()
+
+
+class ProgramViewSet(viewsets.ModelViewSet):
+    """for managing the programmes"""
+    serializer_class = ProgramsSerializers
+    queryset = Programs.objects.all()
+
+class AnnouncementViewSet(viewsets.ModelViewSet):
+    """for managing the announcement"""
+    serializer_class = AnnouncementSerielizer
+    queryset = Anouncement.objects.all()

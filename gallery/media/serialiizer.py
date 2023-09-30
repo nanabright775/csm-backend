@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from media.models import (
-    TagModel,
-    GalleryModel,
-    ImageModel,
+    TagModel,GalleryModel, ImageModel,
+    Anouncement,Programs, News, Event
 )
 
 class TagModelSerializer(serializers.ModelSerializer):
@@ -36,4 +35,29 @@ class ImageModelSerializer(serializers.ModelSerializer):
     image = ImageSerializer
     class Meta:
         model = ImageModel
-        fields = ['title', 'description', 'date_created', 'gallery', 'image']
+        fields = ['title', 'date_created', 'gallery', 'image']
+
+class EventSerializer(serializers.ModelSerializer):
+    """serializers for event"""
+    class Meta:
+        model = Event
+        fields = ['title', 'date_started', 'date_ended', 'description', 'image']
+
+class NewsSerializer(serializers.ModelSerializer):
+    """serializers for News"""
+    class Meta:
+        model = News
+        fields = ['title', 'description', 'image', 'date']
+        
+        
+class ProgramsSerializers(serializers.ModelSerializer):
+    """serializers for programms"""
+    class Meta:
+        model = Programs
+        fields = ['title', 'description', 'date']
+        
+class AnnouncementSerielizer(serializers.ModelSerializer):
+    """serializers for announcement"""
+    class Meta:
+        model = Anouncement
+        fields = ['title', 'description', 'date']
