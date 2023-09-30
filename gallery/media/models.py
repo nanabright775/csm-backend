@@ -1,5 +1,7 @@
+from django.utils import timezone
 import os
 import uuid
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -50,74 +52,52 @@ class User(AbstractBaseUser, PermissionsMixin):
 class TagModel(models.Model):
     """tag to categorise the gallary"""
     tagname = models.CharField(max_length=255)
-    description = models.TextField
-    
-    def __str__(self):
-        return self.tagname
-    
-    
-# class CreatedGallery(models.Model):
-#     """class for comman fields"""
-#     title = models.CharField(max_length=255) 
-#     description = models.TextField
-#     date_created = models.DateField
+    description = models.TextField(null=True)
 
 
 class GalleryModel(models.Model):
     """creating Gallary models"""
     title = models.CharField(max_length=255) 
-    description = models.TextField
-    date_created = models.DateField
+    description = models.TextField(null=True)
+    date_created = models.DateField(default=timezone.now)
     tags = models.ForeignKey(TagModel, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.title   
+ 
 
 class ImageModel(models.Model):
     """creating Image model"""
     title = models.CharField(max_length=255) 
-    date_created = models.DateField
+    date_created = models.DateField(default=timezone.now)
     image = models.ImageField(null=True, upload_to=gallery_image_file_path)
     gallery = models.ForeignKey(GalleryModel, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.title 
+
     
     
 class Event(models.Model):
     """models for event"""
     title = models.CharField(max_length=255)
-    date_started = models.DateField
-    date_ended = models.DateField
-    description = models.TextField
+    date_started = models.DateField(default=timezone.now)
+    date_ended = models.DateField(default=timezone.now)
+    description = models.TextField(null=True)
     image = models.ImageField(null=True, upload_to=gallery_image_file_path)
-    def __str__(self):
-        return self.title 
+
     
     
 class News(models.Model):
     """models for news"""
     title = models.CharField(max_length=255)
-    description = models.TextField
+    description = models.TextField(null=True)
     image = models.ImageField(null=True, upload_to=gallery_image_file_path)
-    date = models.DateField
+    date = models.DateField(default=timezone.now)
 
-    def __str__(self):
-        return self.title 
 
 class Programs(models.Model):
     """models for handlings programs"""
     title = models.CharField(max_length=255)
-    description = models.TextField
-    date = models.DateField
-    def __str__(self):
-        return self.title 
-    
+    description = models.TextField(null=True)
+    date = models.DateField(default=timezone.now)
     
 class Anouncement(models.Model):
     """models for managing announcement"""
     title = models.CharField(max_length=255)
-    description = models.TextField
-    date = models.DateField
-    def __str__(self):
-        return self.title 
+    description = models.TextField(null=True)
+    date = models.DateField(default=timezone.now)
